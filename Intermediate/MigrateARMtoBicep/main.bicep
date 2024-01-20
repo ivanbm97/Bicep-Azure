@@ -153,6 +153,13 @@ resource networkInterface 'Microsoft.Network/networkInterfaces@2023-06-01' = {
           privateIPAllocationMethod: 'Dynamic'
           publicIPAddress: {
             id: publicIPAddress.id
+            properties: {
+              deleteOption: 'Detach'
+            }
+            sku: {
+              name: 'Basic'
+              tier: 'Regional'
+            }
           }
           subnet: {
             id: virtualNetwork::defaultSubnet.id
